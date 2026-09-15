@@ -43,4 +43,23 @@ for i in range(1, cols * rows + 1):
     plt.axis('off')
     # print(type(img))
     plt.imshow(img.squeeze(), cmap='cividis')
+# plt.show()
+
+from torch.utils.data import DataLoader
+# After iterating over all batches, data is shuffled
+train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
+test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
+
+train_features, train_labels = next(iter(train_dataloader))
+# print(f"Train features: {train_features.size()}")
+# print(f"Train labels: {train_labels.size()}")
+
+img = train_features[0].squeeze()
+# print(f"img shape: {img.size()}")
+label = train_labels[0]
+
+plt.clf()
+plt.imshow(img.squeeze(), cmap='gray')
+plt.axis('off')
 plt.show()
+# print(f"Label: {labels_map[int(label)]}")
