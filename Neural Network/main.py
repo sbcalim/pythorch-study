@@ -40,7 +40,6 @@ class NeuralNetwork(nn.Module):
 
 import time
 
-
 # torch.accelerator.synchronize()
 
 # time_before = round(time.time() * 1000)
@@ -50,7 +49,7 @@ model = NeuralNetwork().to(device)
 
 print(model)
 
-# This is interesting. Without synchronizing the accelerator, first .to() takes forever.
+# This is interesting. Without synchronizing the accelerator, first .to() takes forever. Sync itself takes a while.
 # t1 = round(time.time() * 1000)
 # nn_obj = NeuralNetwork()
 # t2 = round(time.time() * 1000)
